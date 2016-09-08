@@ -1,0 +1,22 @@
+{% extends './layout.html' %}
+{% block content %}
+
+<h3>This is the Amce Company Home Page</h3>
+<p>You can learn everything about our salesperons and regions right here!!</p>
+
+<form action = '/add' method = 'POST'>
+	<label for = 'name_field'> Add a new salesperson </label>
+	<input name = 'newsalesperson' type = 'text'/>
+	<input type = 'submit' value = 'submit new salesperson'/>
+</form>
+
+</br>
+
+<form action = '/addregion' method = 'POST'>
+	<label for = 'name_field'> Add a new region </label>
+	<input name = 'newregion' type = 'text'/>
+	<input type = 'submit' value = 'submit new region'/>
+</form>
+
+
+{% endblock %}
