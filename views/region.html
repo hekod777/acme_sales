@@ -13,20 +13,21 @@
 	{% for region in regions %}
 	<li>
 		{{region.zipcode}}
-		<form action = '/region/deleteregion/{{region.id}}?_method=DELETE' method='POST'>
+		<form action = '/regions/{{region.id}}?_method=DELETE' method='POST'>
 			<button type = 'submit'> delete this region!</button>
 		</form>
 		<ul>
-			{% for salesperson in region.salespeople %}
+			{% for salesperson in salesPeople %}
 			<li>
-				{%if salesperson.toremove%}
+        TODO create this instance Method
+				{%if region.hasSalesPerson(salesPersonId) %}
 				<mark>{{salesperson.name}}</mark>
 				<form action = '/salesperson/salesPersonRegions/{{salesperson.id}}/remove/{{region.id}}?back=region&_method=PUT' method = 'POST'>
 					<button type = 'submit'> remove </button>
 				</form>
 				{% else %}
 				{{salesperson.name}}
-				<form action = '/salesperson/salesPersonRegions/{{salesperson.id}}/add/{{region.id}}?back=region&_method=PUT' method = 'POST'>
+				<form action = '/salesPersonRegions/{{salesperson.id}}/add/{{region.id}}?back=region&_method=PUT' method = 'POST'>
 					<button type = 'submit'> add </button>
 				</form>
 				{% endif %}

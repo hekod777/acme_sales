@@ -3,23 +3,24 @@
 
 <h1>Here are all the salesperons</h1>
 
-<form action = '/salesperson/add' method = 'POST'>
-	<label for = 'name_field'> Add a new salesperson </label>
-	<input name = 'newperson' type = 'text'/>
+<form action = '/salesPeople' method = 'POST'>
+	<label for = 'name'> Add a new salesperson </label>
+	<input name = 'name' type = 'text'/>
 	<input type = 'submit' value = 'submit new salesperson'/>
 </form>
 
 <ul>
-	{% for salesperson in salespersons %}
+	{% for salesPerson in salesPeople %}
 	<li>
 		{{salesperson.name}}
 		<form action = '/salesperson/deleteperson/{{salesperson.id}}?_method=DELETE' method='POST'>
 			<button type = 'submit'> delete this guy!</button>
 		</form>
 		<ul>
-			{% for region in salesperson.locations %}
+			{% for region in regions %}
 			<li>
-				{%if region.toremove%}
+        TODO - you need to create this method
+				{%if salesPerson.hasRegion(regionId) %}
 				<mark>{{region.zipcode}}</mark>
 				<form action = '/salesperson/salesPersonRegions/{{salesperson.id}}/remove/{{region.id}}?back=sales&_method=PUT' method = 'POST'>
 					<button type = 'submit'> remove </button>
